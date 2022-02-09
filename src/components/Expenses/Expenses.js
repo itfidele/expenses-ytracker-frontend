@@ -13,7 +13,7 @@ const Expenses=()=>{
         filterChange(value);
         console.log(value);
     }
-    let expenses = [
+    const dummy_expenses = [
         {
             id: 1,
             title:"Samsung TV",
@@ -27,17 +27,23 @@ const Expenses=()=>{
             date: new Date(2022, 11, 2)
         }
     ]
+    const [expenses,updateExpenses] = useState(dummy_expenses);
 
     const addExpenseHandler = expense=>{
-        expenses.push(expense);
-        console.log(expenses)
+        updateExpenses(prevExpenses=>[expense,...prevExpenses]);
     }
     return (
         <Card className="md:w-8/12 w-full md:rounded-md bg-gray-800 p-2 md:mx-auto my-2">
             <NewExpense addFunc={addExpenseHandler}/>
             <ExpenseFilter selected={filteryear} onFilter={addFilter} />
-            <ExpenseItem title={expenses[0].title} amount={expenses[0].amount} date={expenses[0].date} />
-            <ExpenseItem title={expenses[1].title} amount={expenses[1].amount} date={expenses[1].date} />
+            {expenses.map(element=>{
+                return <ExpenseItem 
+                            key={element.id}
+                            title={element.title}
+                            amount={element.amount}
+                            date={element.date}/>
+            })}
+            
         </Card>
     );
 }

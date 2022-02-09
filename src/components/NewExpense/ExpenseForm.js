@@ -48,12 +48,12 @@ const ExpenseForm=(props)=>{
                     </div>
                     <div id='date' className="flex flex-col gap-2">
                         <label htmlFor="date">Date</label>
-                        <input type="date" value={enteredDate} onChange={dateChanged} className="h-8 p-2 rounded" name='date' min="2022-01-01" max={() => new Date(2022, 12, 31)} />
+                        <input type="date" value={enteredDate} onChange={dateChanged} className="h-8 p-2 rounded" name='date' min="2019-01-01" max="2022-01-01" />
                     </div>
                 </div>
                 <div id='footer' className="flex justify-end">
-                    <button type='submit' className="btn box-border bg-fuchsia-700 hover:bg-fuchsia-600 transition-all uppercase text-sm font-bold text-gray-100 rounded"> <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    <button type='submit' className="btn box-border bg-fuchsia-700 hover:bg-fuchsia-600 transition-all uppercase text-sm font-bold text-gray-100 rounded"> <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
                     </svg>&nbsp;Add Expenses</button>
                 </div>
             </Card>
