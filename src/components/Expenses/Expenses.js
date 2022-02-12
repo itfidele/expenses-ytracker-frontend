@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-import ExpenseItem from './ExpenseItem';
 import Card from '../UI/Card';
 import NewExpense from '../NewExpense';
 import ExpenseFilter from './ExpenseFilter';
@@ -9,7 +8,12 @@ import ExpenseLists from './ExpenseLists'
 
 const Expenses=()=>{
     const [filteryear,filterChange] =useState('');
+    const [showform,updateShowForm] = useState(false);
 
+
+    const toggleShowForm=()=>{
+        updateShowForm(!showform);
+    }
     const addFilter = value=>{
         filterChange(value);
         
@@ -38,13 +42,16 @@ const Expenses=()=>{
         return expense.date.getFullYear().toString() === filteryear || filteryear === "";
     });
     return (
-        <Card className="md:w-8/12 w-full md:rounded-md bg-gray-800 p-2 md:mx-auto my-2">
-            <NewExpense addFunc={addExpenseHandler}/>
-            <ExpenseFilter selected={filteryear} onFilter={addFilter} />
-            <ExpenseLists expenses={filteredExpenses} filteryear={filteryear}/>
-            
-            
-        </Card>
+        <div>
+            <NewExpense addFunc={addExpenseHandler} showform={showform} toggle={toggleShowForm} />
+            <Card className="md:w-8/12 w-full md:rounded-md bg-gray-800 p-2 md:mx-auto my-2">
+
+                <ExpenseFilter selected={filteryear} onFilter={addFilter} />
+                <ExpenseLists expenses={filteredExpenses} filteryear={filteryear} />
+
+
+            </Card>
+        </div>
     );
 }
 export default Expenses;

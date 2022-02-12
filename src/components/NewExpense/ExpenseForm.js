@@ -19,6 +19,9 @@ const ExpenseForm=(props)=>{
         changeAmount(event.target.value);
     }
 
+    const hideForm=()=>{
+        props.toggle()
+    }
     
     function submitHandler(event){
         event.preventDefault();
@@ -33,9 +36,16 @@ const ExpenseForm=(props)=>{
         changeAmount('');
         changeTitle('');
     }
+
+    if(!props.showform)
+        return <div className='bg-gray-400 flex justify-center mb-4 items-center p-6'>
+            <button className='bg-gray-300 btn text-gray-800 active:text-gray-100 px-4 py-2' onClick={hideForm}>Add Expense</button>
+            <button className='bg-green-300 btn text-green-800 active:text-gray-100 px-4 py-2' onClick={hideForm}>View Report</button>
+        </div>
+
     return (
         <form onSubmit={submitHandler}>
-            <Card className="bg-gray-400 box-border m-2 p-2 rounded">
+            <Card className="bg-gray-400 box-border mb-4 p-2">
                 <div className="grid grid-cols-2 gap-4">
                     <div id='title' className="flex flex-col gap-2">
                         <label htmlFor="title">Title</label>
@@ -51,6 +61,7 @@ const ExpenseForm=(props)=>{
                     </div>
                 </div>
                 <div id='footer' className="flex justify-end">
+                    <span onClick={hideForm} className="btn cursor-pointer box-border bg-red-700 hover:bg-red-600 transition-all uppercase text-sm font-bold text-gray-100 rounded">Close</span>
                     <button type='submit' className="btn box-border bg-fuchsia-700 hover:bg-fuchsia-600 transition-all uppercase text-sm font-bold text-gray-100 rounded"> <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
                     </svg>&nbsp;Add Expenses</button>

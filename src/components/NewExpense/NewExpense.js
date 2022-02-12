@@ -11,7 +11,7 @@ const NewExpense =(props)=>{
     }
     return(
         <div>
-            <ExpenseForm onSave={onSave}/>
+            <ExpenseForm showform={props.showform} toggle={props.toggle} onSave={onSave}/>
         </div>
     );
 }
