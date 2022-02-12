@@ -36,7 +36,6 @@ const ExpenseForm=(props)=>{
     return (
         <form onSubmit={submitHandler}>
             <Card className="bg-gray-400 box-border m-2 p-2 rounded">
-                {enteredAmount} - {enteredDate} - {enteredTitle}
                 <div className="grid grid-cols-2 gap-4">
                     <div id='title' className="flex flex-col gap-2">
                         <label htmlFor="title">Title</label>
