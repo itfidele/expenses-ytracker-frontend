@@ -50,6 +50,7 @@ const Expenses=()=>{
     });
     return (
         <div>
+            
             <NewExpense toogleChart={updateC} addFunc={addExpenseHandler} showform={showform} toggle={toggleShowForm} />
             <Charts show={showChart} expenses={filteredExpenses}/>
             <Card className="md:w-8/12 w-full md:rounded-md bg-gray-800 p-2 md:mx-auto my-2">

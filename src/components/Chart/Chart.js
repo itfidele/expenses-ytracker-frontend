@@ -2,6 +2,7 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from "react-chartjs-2";
+import ModalItem from '../Modal/ModalItem';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -37,9 +38,13 @@ const Charts = props=>{
     
     return (
         <div className={props.show ===false ? 'hidden':'flex'}>
-            <div className="flex justify-center items-center m-auto w-4/12">
-                <Doughnut data={data} />
-            </div>
+            <ModalItem show={true}>
+                <div className="flex justify-center items-center m-auto w-8/12">
+                    <Doughnut data={data} />
+                </div>
+                
+            </ModalItem>
+            
         </div>
     )
 }
