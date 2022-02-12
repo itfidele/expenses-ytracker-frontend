@@ -6,8 +6,11 @@ import { Doughnut } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Charts = props=>{
-    let prices = props.expenses.map(element => element.amount)
-    let labels = props.expenses.map(element => element.title)
+
+    if(props.expenses.length ===0)
+        return <div></div>;
+    const prices = props.expenses.map(element => element.amount)
+    const labels = props.expenses.map(element => element.title)
 
     const getRandomColor = () => {
         var letters = '0123456789ABCDEF'.split('');
@@ -17,7 +20,7 @@ const Charts = props=>{
         }
         return color;
     }
-    let colors = props.expenses.map(element => getRandomColor())
+    const colors = props.expenses.map(element => getRandomColor())
 
     const data = {
         labels: labels,
@@ -32,9 +35,13 @@ const Charts = props=>{
         ],
     }
     
-    return <div className="flex justify-center items-center m-auto w-4/12">
-        <Doughnut  data={data}/>
-    </div>
+    return (
+        <div className={props.show ===false ? 'hidden':'flex'}>
+            <div className="flex justify-center items-center m-auto w-4/12">
+                <Doughnut data={data} />
+            </div>
+        </div>
+    )
 }
 
 export default Charts;

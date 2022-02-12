@@ -37,14 +37,14 @@ const ExpenseForm=(props)=>{
         changeTitle('');
     }
 
-    const updatechart=()=>{
-        props.toggleChart();
+    const updateChart=()=>{
+        props.toogleChart()
     }
 
     if(!props.showform)
         return <div className='bg-gray-400 flex justify-center mb-4 items-center p-6'>
             <button className='bg-gray-300 btn text-gray-800 active:text-gray-100 px-4 py-2' onClick={hideForm}>Add Expense</button>
-            <button className='bg-green-300 btn text-green-800 active:text-gray-100 px-4 py-2' onClick={updatechart}>View Report</button>
+            <button className='bg-green-300 btn text-green-800 active:text-gray-100 px-4 py-2' onClick={updateChart}>View Report</button>
         </div>
 
     return (
