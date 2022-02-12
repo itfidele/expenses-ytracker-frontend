@@ -4,6 +4,7 @@ import Card from '../UI/Card';
 import NewExpense from '../NewExpense';
 import ExpenseFilter from './ExpenseFilter';
 import ExpenseLists from './ExpenseLists'
+import Charts from '../Chart/Chart';
 
 
 const Expenses=()=>{
@@ -34,6 +35,12 @@ const Expenses=()=>{
     ]
     const [expenses,updateExpenses] = useState(dummy_expenses);
 
+    const [showChart,chartUpdate] = useState(false);
+
+    const updateC=()=>{
+        chartUpdate(!showChart);
+    }
+
     const addExpenseHandler = expense=>{
         updateExpenses(prevExpenses=>[expense,...prevExpenses]);
     }
@@ -43,7 +50,8 @@ const Expenses=()=>{
     });
     return (
         <div>
-            <NewExpense addFunc={addExpenseHandler} showform={showform} toggle={toggleShowForm} />
+            <NewExpense toogleChart={updateC} addFunc={addExpenseHandler} showform={showform} toggle={toggleShowForm} />
+            <Charts show={showChart} expenses={filteredExpenses}/>
             <Card className="md:w-8/12 w-full md:rounded-md bg-gray-800 p-2 md:mx-auto my-2">
 
                 <ExpenseFilter selected={filteryear} onFilter={addFilter} />
